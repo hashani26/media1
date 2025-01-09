@@ -1,5 +1,8 @@
 This is a React Starter Project for use in Stephen Grider's courses on Udemy.
 
+markdown reference - [link](https://www.codecademy.com/resources/docs/markdown/)
+
+tables
 # Data Structuring for Media project
 
 both BE and FE can have same or different data structures and alter according it to the need;
