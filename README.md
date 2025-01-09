@@ -70,3 +70,7 @@ stores different entities in separate spaces with their relationships to other e
 | 2 | dog | 1 |
 | 3 | aunt | 2 |
 | 4 | uncle | 2 |
+
+Redux helps in lazy loading compared to eager loading
+lazy loading - loads the chunk of data that is needed
+eager laoding - loads all data at once
