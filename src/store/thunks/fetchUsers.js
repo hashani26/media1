@@ -3,21 +3,26 @@ import axios from "axios";
 
 const fetchUsers = createAsyncThunk("users/fetch", async () => {
   const response = await axios.get("http://localhost:3005/users");
-  console.log("🚀 ~ fetchUsers ~ response:", response)
   // dev only to display loading state
-  await pause(1000);
+  await pause(10000);
   return response.data;
 });
 
 const pause = (duration) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve;
-    }, duration);
+  new Promise((resolve) => {
+    setTimeout(resolve, duration);
   });
 };
-
 export { fetchUsers };
+
+//---------------why is this worng???? -0 BUG
+// const pause = (duration) => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve; //change this to resolve() with just resolve the promise will never resolve
+//     }, duration);
+//   });
+// };
 
 //https://2ality.com/2015/07/es6-module-exports.html
 
