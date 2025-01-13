@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { fetchUsers, addUsers } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "./Button";
 import Skeleton from "./Skeleton";
+import useThunk from "../hooks/use-thunk";
 
 function UsersList() {
-  const [isLoadingUsers, setIsLoadingUsers] = useState(false);
-  const [loadingUsersError, setLoadingUsersError] = useState(null);
+  const [doFetchUsers, isLoadingUsers, loadingUsersError] =
+    useThunk(fetchUsers);
+  const [doCreateUsers, isCreatingUser, creatingUsersError] =
+    useThunk(addUsers);
+
   const dispatch = useDispatch();
 
   const { data } = useSelector((state) => {
@@ -14,15 +18,11 @@ function UsersList() {
   });
 
   useEffect(() => {
-    setIsLoadingUsers(true);
-    dispatch(fetchUsers())
-      .unwrap()
-      .catch((err) => setLoadingUsersError(err))
-      .finally(() => setIsLoadingUsers(false));
-  }, [dispatch]);
+    doFetchUsers();
+  }, []);
 
   const handleClick = (e) => {
-    dispatch(addUsers());
+    doCreateUsers();
   };
 
   if (isLoadingUsers) return <Skeleton times={4} className={"h-10 w-full"} />;
@@ -41,7 +41,11 @@ function UsersList() {
   return (
     <div>
       <div className="flex justify-end m-2">
-        <Button className="rounded-md border-2 p-2" onClick={handleClick}>
+        <Button
+          // loading={isCreatingUser}
+          className="rounded-md border-2 p-2"
+          onClick={handleClick}
+        >
           Add User
         </Button>
       </div>
