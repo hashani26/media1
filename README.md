@@ -77,3 +77,9 @@ stores different entities in separate spaces with their relationships to other e
 Redux helps in lazy loading compared to eager loading
 lazy loading - loads the chunk of data that is needed
 eager laoding - loads all data at once
+
+# ISSUES
+1. Why is separate loading states maintained for creating, fetching, deleteing users in the component leve but use the same state for loading and error in the reducer?
+ - loading state in the component level is different from the loading state in the reducer.
+ - loading in the component uses async dispatch to update loading state hence use dispatch unwrap method to convert disptach into a normal Promise 
+ - loading in the user reducer becomes stale when we use the component level loading and error states
