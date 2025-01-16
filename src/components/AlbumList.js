@@ -1,15 +1,16 @@
 import React from "react";
-import { useFetchAlbumsQuery } from "../store";
+import { useFetchAlbumsQuery, useAddAlbumMutation } from "../store";
 import ExpandablePanel from "./ExpandablePanel";
+import Button from "./Button";
 
 function AlbumList({ user }) {
-  const { data, error, isLoading } = useFetchAlbumsQuery(user.id);
-  console.log(
-    "🚀 ~ AlbumList ~ data, error, isLoading:",
-    data,
-    error,
-    isLoading
-  );
+  const { data, error, isLoading } = useFetchAlbumsQuery(user);
+  const [addAlbum, results] = useAddAlbumMutation();
+
+  function handleAddAlbum() {
+    console.log("clicked");
+    addAlbum(user);
+  }
 
   let content;
   if (isLoading) {
@@ -19,13 +20,20 @@ function AlbumList({ user }) {
   } else {
     content = data.map((album) => {
       return (
-        <ExpandablePanel key={album.id} header={<div>Albums for {user.name}</div>}>
-          {album.name}
+        <ExpandablePanel key={album.id} header={<>{album.name}</>}>
+          List of photos...
         </ExpandablePanel>
       );
     });
   }
-  return <div>{content}</div>;
+
+  return (
+    <div>
+      <div>Albums for {user.name}</div>
+      <Button onClick={handleAddAlbum}>Add Album</Button>
+      {content}
+    </div>
+  );
 }
 
 export default AlbumList;
