@@ -5,6 +5,7 @@ import { removeUser } from "../store";
 import ExpandablePanel from "./ExpandablePanel";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import AlbumList from "./AlbumList";
 
 function UsersListItem(user) {
   const [doRemoveUser, isLoading, error] = useThunk(removeUser);
@@ -23,7 +24,9 @@ function UsersListItem(user) {
     </>
   );
 
-  return <ExpandablePanel header={header}>content</ExpandablePanel>;
+  return <ExpandablePanel header={header}>
+    <AlbumList user={user}/>
+  </ExpandablePanel>;
 }
 
 export default UsersListItem;
