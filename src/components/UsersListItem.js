@@ -1,4 +1,4 @@
-import { GoTrashcan } from "react-icons/go";
+import { GoTrash } from "react-icons/go";
 import Button from "./Button";
 import useThunk from "../hooks/use-thunk";
 import { removeUser } from "../store";
@@ -17,7 +17,7 @@ function UsersListItem(user) {
   const header = (
     <>
       <Button className={"mr-3"} loading={isLoading} onClick={handleDelete}>
-        <GoTrashcan />
+        <GoTrash />
       </Button>
       {error && "error removing user"}
       {user.name}
