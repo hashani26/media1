@@ -83,3 +83,12 @@ eager laoding - loads all data at once
  - loading state in the component level is different from the loading state in the reducer.
  - loading in the component uses async dispatch to update loading state hence use dispatch unwrap method to convert disptach into a normal Promise 
  - loading in the user reducer becomes stale when we use the component level loading and error states
+
+
+# RTK Query
+
+## Features
+
+1. Data fetching - endpoints, query and mutation
+2. Data caching - 
+3. Data sync - tag system to sync server and redux store data
