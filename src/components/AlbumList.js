@@ -8,7 +8,6 @@ function AlbumList({ user }) {
   const [addAlbum, results] = useAddAlbumMutation();
 
   function handleAddAlbum() {
-    console.log("clicked");
     addAlbum(user);
   }
 
