@@ -2,6 +2,7 @@ import React from "react";
 import { useFetchAlbumsQuery, useAddAlbumMutation } from "../store";
 import ExpandablePanel from "./ExpandablePanel";
 import Button from "./Button";
+import Skeleton from "./Skeleton";
 
 function AlbumList({ user }) {
   const { data, error, isLoading } = useFetchAlbumsQuery(user);
@@ -13,7 +14,7 @@ function AlbumList({ user }) {
 
   let content;
   if (isLoading) {
-    content = <>loading albums...</>;
+    content = <Skeleton times={4} className={"h-10 w-full"} />;
   } else if (error) {
     content = <>error loading albums...</>;
   } else {
@@ -28,8 +29,12 @@ function AlbumList({ user }) {
 
   return (
     <div>
-      <div>Albums for {user.name}</div>
-      <Button onClick={handleAddAlbum}>Add Album</Button>
+      <div className="m-2 flex flex-row items-center justify-between">
+        <h3 className="text-lg font-bold">Albums for {user.name}</h3>
+        <Button loading={results.isLoading} onClick={handleAddAlbum}>
+          Add Album
+        </Button>
+      </div>
       {content}
     </div>
   );
