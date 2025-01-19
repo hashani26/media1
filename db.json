@@ -3,8 +3,59 @@
     {
       "id": "1",
       "name": "Myra"
+    },
+    {
+      "id": "29da",
+      "name": "Lamar Franey"
     }
   ],
-  "albums": [],
-  "photos": []
+  "albums": [
+    {
+      "id": "7d7c",
+      "userId": "1",
+      "name": "Tasty Metal Computer"
+    },
+    {
+      "id": "8ad1",
+      "userId": "29da",
+      "name": "Fantastic Wooden Salad"
+    },
+    {
+      "id": "81c1",
+      "userId": "29da",
+      "name": "Refined Metal Soap"
+    }
+  ],
+  "photos": [
+    {
+      "id": "3fc2",
+      "albumId": "8ad1",
+      "url": "https://loremflickr.com/640/480"
+    },
+    {
+      "id": "1c6d",
+      "albumId": "8ad1",
+      "url": "https://loremflickr.com/640/480"
+    },
+    {
+      "id": "ee79",
+      "albumId": "8ad1",
+      "url": "https://loremflickr.com/640/480"
+    },
+    {
+      "id": "370a",
+      "albumId": "8ad1",
+      "url": "https://loremflickr.com/640/480"
+    },
+    {
+      "id": "545e",
+      "albumId": "8ad1",
+      "url": "https://loremflickr.com/640/480"
+    },
+    {
+      "id": "e217",
+      "albumId": "8ad1",
+      "url": "https://loremflickr.com/640/480"
+    }
+  ]
 }
